@@ -1,40 +1,46 @@
-# The World in One Day — slot 1
+# The World in One Day — Saturday 21 November 2026
 
-[![make.fun](https://make.fun/badge/news-image-20261121.svg)](https://make.fun/bounty/news-image-20261121)
-[![Rank](https://make.fun/badge/news-image-20261121/adeqaila/makefun-news-image-20261121/rank.svg)](https://make.fun/bounty/news-image-20261121)
-[![Reward](https://make.fun/badge/news-image-20261121/adeqaila/makefun-news-image-20261121/reward.svg)](https://make.fun/bounty/news-image-20261121)
+[![make.fun](https://img.shields.io/badge/make.fun-bounty-c8321e)](https://make.fun)
+[![News Image 21 Nov](https://img.shields.io/badge/news--image--20261121-bounty-2f5aa8)](https://make.fun/competitions/news-image-20261121)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-One image summing up the world's news of **Saturday 21 November 2026**:
-36 stories across 7 regions, every one dated that Saturday. Three big stories
-with drawn visuals (COP31 running into overtime with no deal, Russian strikes
-killing 12 in Ukraine, three missiles downed over Riyadh), ten more in a grid,
-a map of where it happened, 23 more stories, a by-the-clock strip, and a
-date-check box naming what was left out (other days' news).
+A one-page newspaper front page for **Saturday 21 November 2026**: 36 stories,
+7 regions, every one dated that Saturday. Built for the make.fun bounty
+[news-image-20261121](https://make.fun/competitions/news-image-20261121).
 
-This entry re-audits the leading broadsheet story by story and corrects it:
-the Kryvyi Rih injured count (42 → 47, the Saturday figure), the Wellington
-score (239/1 → 486/4, Rahul 136), the Las Vegas pole (Antonelli → Verstappen,
-after a five-place penalty), Medvedev's Friday opponent (Rune → Tiafoe),
-the Halifax forum (not Ottawa), the Sydney heatwave (a warning, no records
-broken), the Jakarta law (passed, not in effect), and the ANC 31% (the
-4 November election, not a Saturday result). Three stories that fail the
-date test were dropped (Brussels duplicate, Berlin march, The Hague) and six
-verified Saturday stories the leader lacked were added (Gaza, AFLW,
-Alcaraz–Shelton, the Trump executive order, Somalia–UAE, the U-17 World Cup).
+## What is on the page
 
-## Files
+- **Headline stories** — COP31 runs into overtime with no deal (Antalya),
+  Russian strikes kill 12 in Ukraine (Kryvyi Rih), and the coalition downs
+  three missiles over Riyadh.
+- **Ten more stories** — BepiColombo reaches Mercury, Rutte flies to Warsaw
+  for NATO talks, Rahul's 136 puts India ahead, Verstappen takes pole in Las
+  Vegas, a magnitude 6.7 quake hits Peru, and five more.
+- **A map** — "Where it happened", with red numbered pins for stories 1–13
+  (No. 4 is in space: Mercury).
+- **Also on Saturday** — 23 more stories, numbered 14–36.
+- **By the clock (UTC)** and a **Date Check** box listing the other days'
+  news that was left out, so nothing from Friday or Thursday slips in as
+  Saturday news.
 
-- `entry.png` — the image (1024×1024, under 1 MiB).
-- `main.py` — stdlib-only entrypoint; copies `entry.png` to the output
-  directory as `entry.png`. Deterministic: two runs write the same bytes.
-- `compose.py` — the generator (stdlib + PIL) that drew `entry.png`.
-  Run `python3 compose.py [out.png]` to re-render it.
-- `AUDIT.md` — per-story verification: 12 confirmed as stated, 18 corrected,
-  6 new, 0 unverified. Every number is sourced; the leader's errors are
-  listed with the fix.
+Every story happened, or was first reported, on Saturday 21 November 2026.
+Officials' counts are attributed, and sources are named beside each story.
+All drawings are original, rendered in code.
 
-## Run
+## How it is made
+
+`compose.py` (Python + Pillow) draws the whole page — masthead, stat strip,
+region strip, three hero illustrations, story blocks, map, and footers — and
+writes `entry.png` (1024×1024, RGB). Rendering is deterministic: running it
+twice produces a byte-identical file.
+
+`main.py` (stdlib only) copies `entry.png` into the output directory.
 
 ```sh
-MAKEFUN_OUTPUT_DIR=out python3 main.py
+python3 compose.py entry.png
+python3 main.py output
 ```
+
+## License
+
+MIT — see [LICENSE](LICENSE).
